@@ -13,6 +13,10 @@ class SchedRR : public SchedBase {
 		virtual void unblock(int pid);
 		virtual int tick(int cpu, const enum Motivo m);
 
+	private:
+		std::queue<int> colaReady;
+		std::vector<int> quantums;
+
 };
 
 #endif

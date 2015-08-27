@@ -1,3 +1,5 @@
-#Tarea que simula (creo) uno de cpu por 100 ciclos sin llamadas bloqueantes
+#Tarea que simula (creo) una llamada de cpu por 100 ciclos sin llamadas bloqueantes
 
-TaskCPU 100
+TaskCPU 100				#algoritmo
+TaskConsola 20 2 4		#musica
+TaskConsola 25 2 4		#interné 

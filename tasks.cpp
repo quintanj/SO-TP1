@@ -25,7 +25,8 @@ void TaskConsola(int pid, vector<int> params){
 	int bmax = params[2];
 	// Valor para hacer modulo sobre la salida de rand() 
 	// teniendo en cuenta el offset por 1
-	int cant = bmax - bmin + 1;
+	int cant = bmax - bmin + 1; //el offset tiene que ser esta cantidad
+	int cant_ciclos;
 	srand(1);
 	for (int i=0; i < n; i++){
 		cant_ciclos = bmin + (rand() % cant);
