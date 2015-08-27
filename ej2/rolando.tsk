@@ -1,0 +1,3 @@
+#Tarea que simula (creo) uno de cpu por 100 ciclos sin llamadas bloqueantes
+
+TaskCPU 100
