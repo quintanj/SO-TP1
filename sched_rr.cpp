@@ -29,5 +29,56 @@ void SchedRR::unblock(int pid) {
 }
 
 int SchedRR::tick(int cpu, const enum Motivo m) {
+	int nextPid;
+	switch (m) {
 
+    	case TICK :
+    		if (current_pid(cpu) == IDLE_TASK && !colaReady.empty()){
+    			nextPid = IDLE_TASK;
+    		}else{
+
+       			quantumsActuales[cpu]--;
+       			if (quantumsActuales[cpu] > 0){
+       				nextPid = current_pid(cpu);
+       			}else{
+       				colaReady.push(current_pid(cpu));
+       				quantumsActuales[cpu] = quantums[cpu];
+       				nextPid = colaReady.front();
+       				colaReady.pop();
+       			}
+       		break;
+       		}
+
+    	case BLOCK :/*
+    		quantumsActuales[cpu] = quantums[cpu];
+			if(!colaReady.empty()){
+    			nextPid = colaReady.pop();
+
+    		}else{
+        		nextPid = IDLE_TASK;
+        	}    		
+        	*/
+        	break;
+
+    	case EXIT :
+    		//reestablecemos el quantum actual del procesador correspondiente
+    		quantumsActuales[cpu] = quantums[cpu];	
+
+    		if(!colaReady.empty()){
+    			nextPid = colaReady.front();
+    			colaReady.pop();
+
+    		}else{
+        		nextPid = IDLE_TASK;
+        	}
+        	break;
+
+    	default: cout << "Motivo entro mal" << endl;
+	} 
+
+	return nextPid;
 }
+
+
+
+

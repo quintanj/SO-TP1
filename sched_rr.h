@@ -16,6 +16,7 @@ class SchedRR : public SchedBase {
 	private:
 		std::queue<int> colaReady;
 		std::vector<int> quantums;
+		std::vector<int> quantumsActuales;
 
 };
 
