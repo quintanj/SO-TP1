@@ -1,0 +1,5 @@
+#tres tareas tipo batch
+
+TaskBatch 10 3
+TaskBatch 5 2
+TaskBatch 8 4

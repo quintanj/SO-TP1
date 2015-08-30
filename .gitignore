@@ -11,4 +11,7 @@ tasks.o
 basetask.o
 basesched.o
 simusched
-*.pdf
+*.aux
+*.toc
+*.out
+*.log

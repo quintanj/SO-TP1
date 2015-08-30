@@ -1,5 +1,6 @@
-#Tarea que simula (creo) una llamada de cpu por 100 ciclos sin llamadas bloqueantes
+#Lote que simula una llamada de cpu por 100 ciclos sin llamadas bloqueantes
+# y dos tareas bloqueantes
 
 TaskCPU 100				#algoritmo
 TaskConsola 20 2 4		#musica
-TaskConsola 25 2 4		#interné 
+TaskConsola 25 2 4		#internet

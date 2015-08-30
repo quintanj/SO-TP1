@@ -34,6 +34,30 @@ void TaskConsola(int pid, vector<int> params){
 	}
 }
 
+void TaskBatch(int pid, vector<int> params){ //params: total_cpu y cant_bloqueos
+	int total_cpu = params[0];
+	int cant_bloqueos = params[1];
+
+	//genero valores en donde ocurriran los bloqueos [0, total_cpu-1]
+	vector<bool> momentos(total_cpu);
+	int contador = 0;
+	while(contador < cant_bloqueos){
+		int aux = rand() % total_cpu;
+		if(!momentos[aux]){
+			momentos[aux] = true;
+			contador++;
+		}
+	}
+
+	for(int i = 0; i < total_cpu; i++){
+		if(momentos[i]){
+			uso_IO(pid, 1);
+		}else{
+			uso_CPU(pid, 1);
+		}
+	}
+}
+
 void tasks_init(void) {
 	/* Todos los tipos de tareas se deben registrar acá para poder ser usadas.
 	 * El segundo parámetro indica la cantidad de parámetros que recibe la tarea
@@ -42,5 +66,6 @@ void tasks_init(void) {
 	register_task(TaskIO, 2);
 	register_task(TaskAlterno, -1);
 	register_task(TaskConsola, 3);
+	register_task(TaskBatch, 2);
 }
 
