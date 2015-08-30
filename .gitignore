@@ -1,0 +1,14 @@
+#Elementos a ser ignorados por git
+##el elemento sched_mistery.o no puede ser eliminado
+##por eso hay que aclarar cada archivo .o por separado U_U
+main.o
+sched_fcfs.o
+sched_no_mistery.o
+sched_rr.o
+sched_rr2.o
+simu.o
+tasks.o
+basetask.o
+basesched.o
+simusched
+*.pdf
