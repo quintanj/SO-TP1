@@ -14,9 +14,9 @@ class SchedRR : public SchedBase {
 		virtual int tick(int cpu, const enum Motivo m);
 
 	private:
-		std::queue<int> colaReady;
-		std::vector<int> quantums;
-		std::vector<int> quantumsActuales;
+		std::queue<int> colaReady;			//tareas que estan en estado ready
+		std::vector<int> quantums;			//quantums correspondientes a cada cpu
+		std::vector<int> quantumsActuales;	//ciclos restantes de cada cpu
 
 };
 
