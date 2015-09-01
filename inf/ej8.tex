@@ -27,7 +27,7 @@ TaskCPU 5
 @2: 
 *2 TaskCPU 20
 TaskCPU 5
-@3:
+@4:
 TaskCPU 20
 TaskConsola 10 1 5
 TaskConsola 2 1 2
@@ -40,10 +40,16 @@ La idea del lote, es cargar los primeros cores con tareas que tarden mas en term
 para poder apreciar de esta forma, que efectivamente se asignará el cpu con menos tareas.
 Debido a la implementación cuando todos los cores tengan igual cantidad de procesos, se le asignará el cpu mas chico numéricamente. 
 
-GRAFICO
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{../ej8/rr2.png}
+  \caption{}
+\end{figure}
 
 Se puede observar que no existe migración de núcleos, ya que todas las tareas mantienen su número de cpu a lo largo de toda la simulación.
-En los instantes 0, 2 y 3 se ve que llegan las tareas y se les asignan los cores de la forma esperada. En el instante 
+En los instantes 0, 2 y 4 se ve que llegan las tareas y se les asignan los cores de la forma esperada. En el instante 4, los 3 cpu tienen
+3 tareas cada uno. En el instante 15 el cpu 2 se queda sin tareas para ejecutar(la tarea 2 termina en el momento 2, la 5 en el 9 y la 13 en el 15). por lo tanto se le asigna el IDLE_TASK por un ciclo de clock
+hasta que llegan dos nuevas tareas. Vemos que efectivamente se le asignan al core número 2, que es el que menos tareas tenia de los tres. 
+
 
 
 
