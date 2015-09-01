@@ -1,0 +1,27 @@
+\subsection{Ejercicio 4}
+
+El ejercicio consiste en implementar el scheduler $Round-Robin$, que soporte migraciones entre núcleos y tenga una única cola global
+para los procesos. \\
+
+Para esto se utiliza la estructura $queue<int>$, donde cada elemento de la misma representa un pid de algún proceso listo para ser ejecutado.
+También se debe guardar la cantidad de cores y sus respectivos quantums, que son pasados como parámetro cuando se llama al constructor de la clase. 
+Se almacenan entonces estos datos y el quantum que le queda a cada proceso en cada CPU, usando dos estructuras de tipo $vector<int>$.\\
+
+Los métodos a implementar son:
+ 
+$load(pid)$: encola $pid$ en $colaReady$ que es la cola de procesos en estado ready.
+$unblock(pid)$: hace la misma acción, encolar nuevamente el pid de la tarea que se desbloqueó.
+En el método $tick(cpu, motivo)$ se toman 3 casos: el proceso consumió todo el ciclo usando el CPU, realizó una llamada bloqueante o terminó
+ de ejecutarse. \\
+
+\begin{itemize}
+\item TICK: Si la tarea era IDLE_TASK y no hay procesos en $colaReady$ sigue ejecutando lo mismo.
+			Si la tarea era IDLE_TASK pero hay tareas disponibles en $colaReady$ se toma el tope de la cola (se quita de la cola), se actualiza el quantum disponibles
+			 y se devuelve ese pid.
+			Si era cualquier otra tarea se resta un tick al quantum actual. Se chequea si se agotó su quantum, sino sigue ejecutando. Si lo consumió todo, se encola 
+			el pid en colaReady, se actualiza el quantum diponible, y se toma el tope de la cola como pid siguiente.
+\item BLOCK: Si no hay mas tareas en colaReady, se devuelve IDLE_TASK.
+				Si hay, se actualiza el quantum diponible se devuelve el tope de colaReady quitando el elemento de la misma.
+\item EXIT: Ídem BLOCK.
+\end{itemize}
+
