@@ -1,0 +1,54 @@
+\subsection{Ejercicio 8}
+
+En el ejercicio 8 se pide realizar una implementación del scheduler round robin, pero sin migración de procesos entre núcleos.
+Para esto se agregaron nuevas estructuras a la clase SchedRR2:
+colaReady: ahora es un vector de colas, las cuales van a almacenar los pid de las tareas que ultilicen el core correspondiente.
+cantTasks: indica la cantidad de tareas que tiene cada cpu (RUNNING + BLOCKED + READY).
+cpuTareasBloqueadas: es una cola de tuplas con un pid en la primera coordenada (proceso que hizo llamada bloqueante) y número de core en el cual estaba ejecutando.
+
+Los métodos load, unblock y tick también cambian respecto del round robin con migración de procesos.
+load(pid): ahora se encarga primero de buscar cual es el cpu con menor cantidad de tareas y, una vez encontrado, sumar uno a la cantTasks de ese cpu. Luego encola la tarea en la cola correspondiente de tareas ready.
+unblock(pid): como se pide que no haya migración de procesos entre núcleos, se guarda en la estructura $cpuTareasBloqueadas$ todos las tareas bloqueadas con su número de 
+core. Esta función encuentra la tupla en la cola, la quita de la cola, y luego encola la tarea en la colaReady del cpu obtenido.
+tick(cpu, m): 
+Motivo TICK sigue siendo similar a la implementación anterior.
+Motivo BLOCK ademas de quitar al pid de la $colaReady$ del cpu, arma una tupla de la forma (pid, cpu), siendo pid = current_pid(cpu). Luego encola esa tupla en $cpuTareasBloqueadas$, 
+si quedan tareas en la $colaReady$ toma la primera y devuelve su pid, y sino hay mas ready, devuelve IDLE_TASK.
+Motivo EXIT acá se resta uno a la cantTasks del cpu actual, y se devuelve la tarea que sigue en la $colaReady$ y si no hay mas, IDLE_TASK.
+
+Para corroborar su correcto funcionamiento se ideó un lote de tareas que permita chequear que, efectivamente no haya migración de núcleos y que se asignen correctamente 
+los cores que cada tarea va a utilizar. 
+
+Lote utilizado:
+
+TaskCPU 20		
+TaskConsola 20	1 5	
+TaskCPU 5
+@2: 
+*2 TaskCPU 20
+TaskCPU 5
+@3:
+TaskCPU 20
+TaskConsola 10 1 5
+TaskConsola 2 1 2
+@18:				
+TaskCPU 5
+TaskConsola 3 2 4
+
+La simulación se hizo con 3 cores con cambio de contexto 0, ya que no modifica el comportamiento del scheduler y costo de migración de núcleo 0.
+La idea del lote, es cargar los primeros cores con tareas que tarden mas en terminar, y dejar en el ultimo tareas que vayan terminando y que liberen el cpu, 
+para poder apreciar de esta forma, que efectivamente se asignará el cpu con menos tareas.
+Debido a la implementación cuando todos los cores tengan igual cantidad de procesos, se le asignará el cpu mas chico numéricamente. 
+
+GRAFICO
+
+Se puede observar que no existe migración de núcleos, ya que todas las tareas mantienen su número de cpu a lo largo de toda la simulación.
+
+
+
+
+
+
+
+
+

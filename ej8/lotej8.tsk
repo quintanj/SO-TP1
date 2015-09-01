@@ -1,0 +1,14 @@
+
+TaskCPU 20		
+TaskConsola 20	1 5	
+TaskCPU 5
+@2: 
+*2 TaskCPU 20
+TaskCPU 5
+@3:
+TaskCPU 20
+TaskConsola 10 1 5
+TaskConsola 2 1 2
+@18:				#estas dos ultimas debería ir al cpu 2
+TaskCPU 5
+TaskConsola 3 2 4
