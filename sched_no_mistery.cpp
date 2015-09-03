@@ -42,7 +42,7 @@ void SchedNoMistery::unblock(int pid) {
 }
 
 int SchedNoMistery::tick(int cpu, const enum Motivo m) {  
-	int nextPid;
+	int nextPid = IDLE_TASK;
 	
 		switch (m) {
     	case TICK:{
@@ -62,7 +62,7 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 						colaActual = i;						
 						break;
 					}else{
-						if ((unsigned int) i == colaReady.size()) nextPid = IDLE_TASK;		//si no hay tareas en ninguna cola sigue IDLE_TASK
+						if ((unsigned int) i == colaReady.size() -1) nextPid = IDLE_TASK;		//si no hay tareas en ninguna cola sigue IDLE_TASK
 						}
 				}
     		}else{
@@ -111,7 +111,7 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 							colaActual = i;						
 							break;
 						}else{
-							if ((unsigned int)i == colaReady.size()) nextPid = IDLE_TASK;		//si no hay tareas en ninguna cola sigue IDLE_TASK
+							if ((unsigned int)i == colaReady.size() - 1) nextPid = IDLE_TASK;		//si no hay tareas en ninguna cola sigue IDLE_TASK
 							}
 					}
 			break;
@@ -127,7 +127,7 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 							colaActual = i;						
 							break;
 						}else{
-							if ((unsigned int)i == colaReady.size()) nextPid = IDLE_TASK;		//si no hay tareas en ninguna cola sigue IDLE_TASK
+							if ((unsigned int)i == colaReady.size() - 1) nextPid = IDLE_TASK;		//si no hay tareas en ninguna cola sigue IDLE_TASK
 							}
 					}
 			break;
