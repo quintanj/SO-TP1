@@ -62,12 +62,12 @@ void Task7(int pid, vector<int> params){
 	if (pid == 0){
 		uso_CPU(pid, 8	);
 		uso_IO(pid, 1);
-		uso_CPU(pid, 10);
+		uso_CPU(pid, 1);
 		
-		//~ uso_IO(pid, 5);
+		uso_IO(pid, 5);
 		uso_CPU(pid, 10);
 	//~ 
-		uso_IO(pid, 5);
+		//~ uso_IO(pid, 5);
 		//~ uso_CPU(pid, 8);
 		
 		//~ uso_IO(pid, 8);

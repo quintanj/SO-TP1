@@ -37,11 +37,12 @@ void SchedRR2::load(int pid) {
 void SchedRR2::unblock(int pid) {
 	int cpu;
 	pair<int, int> taskCpu = cpuTareasBloqueadas.front();	//tomo primera tupla de la cola de (task,cpu)
-	
+	cpuTareasBloqueadas.pop();								//la quito de la cola cpuTareasBloquedas
 	while((taskCpu.first) != pid){				//si no coincide el pid sigo en el loop
 		cpuTareasBloqueadas.push(taskCpu);		//no es la tarea que busco, la encolo de vuelta
-		cpuTareasBloqueadas.pop();				//saco la primera de la cola
 		taskCpu = cpuTareasBloqueadas.front();	//pongo la que sigue
+		cpuTareasBloqueadas.pop();				//la saco de la cola
+		
 		}
 	//la tarea a desbloquear ya no está en la cola cpuTareasBloqueadas
 	//tengo la tarea y el cpu al cual pertenece en la tupla taskCpu, la agrego en su cola correspondiente

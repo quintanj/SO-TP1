@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <queue>
+#include <utility>
 #include "basesched.h"
 
 class SchedNoMistery : public SchedBase {
@@ -13,10 +14,14 @@ class SchedNoMistery : public SchedBase {
     virtual int tick(int cpu, const enum Motivo m);  
     
   private:
-	std::vector<std::queue<int> > colaReady;	//hay una cola por cada quantum pasado por paŕametro. NOTA: si se pasa solo un paŕametro el vector tiene dos elem
-	sdt::vector<int> quantumPorCola;			//me dice el quantum correspondiente a la cola	
-	int quantumRestante;						//es lo que le resta ejecutar a la tarea antes de ser desalojada 
-	int colaActual;								//me dice cual es la cola de la cual debo tomar tareas para ejecutar. INICIALIZAR EN 0
+  
+	std::vector<std::queue<int> > colaReady;		//hay una cola por cada quantum pasado por paŕametro. NOTA: si se pasa solo un paŕametro el vector tiene dos elem
+	std::vector<int> quantumPorCola;				//me dice el quantum correspondiente a la cola	
+	std::queue<std::pair<int, int> > colaBloqueados;//cola de tuplas con (pid, cola en la que entra cuando hace unblock)
+	int quantumRestante;							//es lo que le resta ejecutar a la tarea antes de ser desalojada 
+	int colaActual;									//me dice cual es la cola de la cual debo tomar tareas para ejecutar. INICIALIZAR EN 0
+	
+	
 };
 
 #endif
@@ -33,5 +38,5 @@ Al final se sigue ejecutando con el ultimo quantum pasado si es que la tarea no 
 cuando llega un tarea nueva en medio de la ejecución, solo corren las nuevas hasta alcanzar el quantum que tienen las tareas que ya venian ejecutando.
 la primaras colas tienen priridad de ejecucion
 
-La tarea que se bloquea despues va a la cola anterior. osea corre otra vez el tiempo que tenia que correr seguido cuando se bloqueó.
+La tarea que se bloquea se encola va a la cola anterior. 
 */
