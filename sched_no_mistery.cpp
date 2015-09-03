@@ -3,12 +3,14 @@
 #include <utility>
 #include "sched_no_mistery.h"
 #include "basesched.h"
+#include <iostream>
 
 using namespace std;
 
 SchedNoMistery::SchedNoMistery(vector<int> argn) {  
-	colaReady.resize(argn[0] + 1);		//creo el vector de colaReady, una cola por quantum asignado. Siempre el primero es de quantum 1
-	quantumPorCola.resize(argn[0] + 1);	//vector de quantums
+	int cantQuantums = argn.size();
+	colaReady.resize(cantQuantums + 1);		//creo el vector de colaReady, una cola por quantum asignado. Siempre el primero es de quantum 1
+	quantumPorCola.resize(cantQuantums + 1);	//vector de quantums
 	quantumPorCola[0] = 1;				//el quantum de la primer cola, siempre es 1
 	//cargo los valores de los quantums pasados por parámetro
 	//al vector quantumPorCola
