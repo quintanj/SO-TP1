@@ -1,0 +1,9 @@
+#en este lote vemos que hacen los parámetros que le pasamos al scheduler,
+#el comportamiento que tienen cunado son tareas que no se bloquean y
+#que es lo que pasa cuando llegan mas tareas despues de cierto tiempo.
+
+*4 TaskCPU 40
+@20:
+*2 TaskCPU 40
+@30:
+*2 TaskCPU 30
