@@ -15,7 +15,7 @@ SchedNoMistery::SchedNoMistery(vector<int> argn) {
 	//cargo los valores de los quantums pasados por parámetro
 	//al vector quantumPorCola
 	for(unsigned int i = 0; i < argn.size(); i++){
-			quantumPorCola[i] = (argn[i] == 0)? 1 : argn[i]; //si le pasan parámetro 0 le pongo 1 como quantum a esa cola
+			quantumPorCola[i] = (argn[i] == 0)? -1 : argn[i]; //si le pasan parámetro 0 le pongo 1 como quantum a esa cola
 		}
 	//~ quantumPorCola[cantQuantums] = 1;			//la ultima cola tiene quantum 1 
 	colaActual = 0;			//empieza a ehecutar las tareas de la cola 0
@@ -68,7 +68,7 @@ int SchedNoMistery::tick(int cpu, const enum Motivo m) {
 				}
     		}else{
 			//no era la IDLE_TASK, se resta uno al quantum restante
-				
+				if(quantumRestante < 0) nextPid = current_pid(cpu);		//me llegó un parámetro con quantum 0, sigue esa tarea hasta que temrina
        			quantumRestante--;
        			if (quantumRestante == 0){
 				//se quedó sin tiempo
