@@ -5,6 +5,7 @@
 #include <queue>
 #include <utility>
 #include "basesched.h"
+#include <iostream>
 
 class SchedNoMistery : public SchedBase {
   public:
