@@ -58,28 +58,22 @@ void TaskBatch(int pid, vector<int> params){ //params: total_cpu y cant_bloqueos
 	}
 }
 
-void Task7(int pid, vector<int> params){
-	if (pid == 0){
-		uso_CPU(pid, 8	);
-		uso_IO(pid, 1);
-		uso_CPU(pid, 1);
+void Task2BLOCK(int pid, vector<int> params){
+	
+	uso_CPU(pid, 8);
+	uso_IO(pid, 1);
+	uso_CPU(pid, 1);
+	
+	uso_IO(pid, 5);
+	uso_CPU(pid, 15);
 		
-		uso_IO(pid, 5);
-		uso_CPU(pid, 10);
-	//~ 
-		//~ uso_IO(pid, 5);
-		//~ uso_CPU(pid, 8);
-		
-		//~ uso_IO(pid, 8);
-		uso_CPU(pid, 30);
-		
-	}else{
-		uso_CPU(pid, 42);
-		//~ uso_IO(pid, 3);
-		//~ uso_CPU(pid, 10);
-		//~ uso_IO(pid, 5); 
-		//~ uso_CPU(pid, 20);		
-		}
+}
+
+void Task1BLOCK(int pid, vector<int> params){
+	
+	uso_CPU(pid, 8);
+	uso_IO(pid, 1);
+	uso_CPU(pid, 15);
 }
 
 void tasks_init(void) {
@@ -91,6 +85,7 @@ void tasks_init(void) {
 	register_task(TaskAlterno, -1);
 	register_task(TaskConsola, 3);
 	register_task(TaskBatch, 2);
-	register_task(Task7, -1);
+	register_task(Task1BLOCK, -1);
+	register_task(Task2BLOCK, -1);
 }
 

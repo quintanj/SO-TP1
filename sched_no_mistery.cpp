@@ -11,13 +11,13 @@ SchedNoMistery::SchedNoMistery(vector<int> argn) {
 	int cantQuantums = argn.size();
 	colaReady.resize(cantQuantums);		//creo el vector de colaReady, una cola por quantum asignado. Siempre el primero es de quantum 1
 	quantumPorCola.resize(cantQuantums);	//vector de quantums
-	//~ quantumPorCola[0] = 1;				//el quantum de la primer cola, siempre es 1
+
 	//cargo los valores de los quantums pasados por parámetro
 	//al vector quantumPorCola
 	for(unsigned int i = 0; i < argn.size(); i++){
 			quantumPorCola[i] = (argn[i] == 0)? -1 : argn[i]; //si le pasan parámetro 0 le pongo 1 como quantum a esa cola
 		}
-	//~ quantumPorCola[cantQuantums] = 1;			//la ultima cola tiene quantum 1 
+
 	colaActual = 0;			//empieza a ehecutar las tareas de la cola 0
 }
 
