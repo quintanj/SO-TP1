@@ -4,6 +4,7 @@ LDFLAGS= -lpthread
 
 OBJS=main.o simu.o basesched.o basetask.o tasks.o sched_rr.o sched_fcfs.o sched_rr2.o sched_no_mistery.o
 MAIN=simusched
+IMGS=ej1/*.png ej2/*.png ej3/*.png ej4/*.png ej5/*.png ej7/*.png ej8/*.png
 
 .PHONY: all clean new ejercicio1 ejercicio2 ejercicio3 ejercicio4 ejercicio5 ejercicio6 ejercicio7 ejercicio8
 
@@ -54,6 +55,6 @@ ejercicio8: simusched
 
 
 clean:
-	rm -f $(OBJS) $(MAIN)
+	rm -f $(OBJS) $(MAIN) $(IMGS)
 
 new: clean all
