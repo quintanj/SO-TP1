@@ -10,7 +10,7 @@ Se almacenan entonces estos datos y el quantum que le queda a cada proceso en ca
 Los métodos a implementar son:
  
 $load(pid)$: encola $pid$ en $colaReady$ que es la cola de procesos en estado ready.
-$unblock(pid)$: hace la misma acción, encolar nuevamente el pid de la tarea que se desbloqueó.
+$unblock(pid)$: hace la misma acción, encolar nuevamente el pid de la tarea que se desbloqueó. Es decir, la tarea queda al final de la $colaReady$
 En el método $tick(cpu, motivo)$ se toman 3 casos: el proceso consumió todo el ciclo usando el CPU, realizó una llamada bloqueante o terminó
  de ejecutarse. \\
 
@@ -25,3 +25,22 @@ En el método $tick(cpu, motivo)$ se toman 3 casos: el proceso consumió todo el
 \item EXIT: Ídem BLOCK.
 \end{itemize}
 
+Se creó un lote de tareas con el fin de probar el correcto funcionamiento del scheduler.
+
+\begin{itemize}
+\item *2 TaskCPU 20
+\item TaskConsola 10 1 5
+\item TaskBatch 15 5
+\end{itemize}
+
+
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{../ej4/test.png}
+  %~ \caption{}
+\end{figure}
+
+
+En el gráfico se puede ver, como las tareas van migrando de núcleo, y que cada núcleo tiene un quantum asociado. En particular el core 0 tiene quantum 3 y el 
+core 1 tiene como quantum 2. Cada vez que cada tarea agota su tiempo es desalojada y encolada en $colaReady$.
+Cuando las tareas 2 y 3 realizan llamadas bloqueantes, son desalojadas y quitadas de la $colaReady$, una vez que se desbloquean se encolan nuevamente en $colaReady$
+En el instante 5 se ve que como las tareas 2 y 3 estan bloqueadas la tarea 1 obtiene el cpu dos veces seguidas, ya que no queda ninguna otra tarea para ejecutar.
