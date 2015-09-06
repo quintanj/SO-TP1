@@ -1,0 +1,62 @@
+\subsection{Ejercicio 5}
+
+Implementado el Scheduler Round-Robin, se desea analizar ciertos parámetros de calidad del scheduler comparando los mismos para un quantum de 2, 10 y 50 ciclos.
+El lote de tareas para la prueba consiste en el siguiente:
+
+\begin{verbatim}
+*3 TaskCPU 50 
+*2 TaskConsola 5 3 3
+\end{verbatim}
+
+Que especifica tres tareas con uso de CPU durante 50 ciclos y 2 tareas que realizan 5 llamadas bloqueantes con duracion de 3 ciclos cada una.
+
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{../ej5/ej5RR1202.png}
+  \caption{Tareas ej5 - quantum = 2}
+\end{figure}
+
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{../ej5/ej5RR12010.png}
+  \caption{Tareas ej5 - quantum = 10}
+\end{figure}
+
+
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{../ej5/ej5RR12050.png}
+  \caption{Tareas ej5 - quantum = 50}
+\end{figure}
+
+Los parámetros de calidad a analizar son: latencia, waiting time y tiempo total de ejecución, siendo la latencia el tiempo que la tarea pasa en estado ''listo'' hasta que comienza su ejecución, el waiting time el tiempo que pasa una tarea sin ejecutar desde el momento que está en estado ''listo'' hasta que termina su ejecución, y el tiempo total de ejecución el tiempo que toma la tarea desde que está en estado ''listo'' hasta que cumple con su ejecución.
+
+\begin{table}[h!]
+	\begin{center}
+		\caption{Parámetros de calidad para el sceduler round robin: SchedRR.}
+		\label{tab:table1}
+		\begin{tabular}{|l|c|c|c|c|}
+			\hline
+			& Tarea & Latencia & Waiting time & Tiempo total de ejecución \\
+			\hline
+			\hline
+			& 0 & 2 & & 339 \\ \cline{2-5}
+			& 1 & 6 & & 342\\ \cline{2-5}
+			Quantum = 2 & 2 & 10 & & 345 \\ \cline{2-5}
+			& 3 & 14 & & 105 \\ \cline{2-5}
+			& 4 & 17 & & 108 \\ 
+			\hline
+			\hline
+			& 0 & 2 & & 213 \\ \cline{2-5}
+			& 1 & 14 & & 216 \\ \cline{2-5}
+			Quantum = 10 & 2 & 26 & & 219\\ \cline{2-5}
+			& 3 & 38 & & 222 \\ \cline{2-5}
+			& 4 & 41 & & 225 \\ 
+			\hline
+			\hline
+			& 0 & 2 & & 165 \\ \cline{2-5}
+			& 1 & 54 & & 168 \\ \cline{2-5}
+			Quantum = 50 & 2 & 171 & & 156 \\ \cline{2-5}
+			& 3 & 158 & & 198 \\ \cline{2-5}
+			& 4 & 161 & & 201 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
