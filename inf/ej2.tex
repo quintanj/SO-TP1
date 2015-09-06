@@ -2,10 +2,11 @@
 
 Para representar el uso de 100 ciclos de CPU y dos tareas bloqueantes definimos el siguiente lote de tareas:\\
 
-TaskCPU 200 \\
-TaskConsola 20 2 4\\
-TaskConsola 25 2 4\\
-
+\begin{itemize}
+TaskCPU 200 
+TaskConsola 20 2 4
+TaskConsola 25 2 4
+\end{itemize}
 TaskConsola realizará 20 y 25 llamadas bloqueantes respectivamente, con cada bloqueo de duración variable entre 2 y 4 ciclos. El cambio de contexto se fijo a 4 ciclos. En este ejercicio, el enunciado no aclaraba nada de costos de migración, con lo cual lo mantuvimos en cero. Estos fueron los gráficos obtenidos :
 
 
