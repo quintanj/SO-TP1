@@ -30,5 +30,5 @@ La latencia es el tiempo que un proceso tarda en empezar a ejecutarse. En la fig
 
 En cambio, en la figura ~\ref{fig:dosnucleos} con dos núcleos, las tareas cero y uno tiene latencia 4, ya que ambas corren en núcleos distintos. Luego, la tarea  dos tienen latencia $4 + duracion\_tarea_{1} + 4$. La duración de la $tarea_{1}$ es de 80 ciclos, con lo que la latencia de la tarea dos es 88.\\
 
-Dados los valores de latencia de cada tarea en ambos gráficos, concluimos que la desventaja de tener un solo núcleo es el aumento de la latencia. Todas las tareas deben esperar a que el CPU esté libre para correr, con lo cual el valor de latencia de una tarea refleja no solo su context switch, sino el tiempo de corrida y la latencia de las tareas anteriores. 
+Dados los valores de latencia de cada tarea en ambos gráficos, concluimos que la desventaja de tener un solo núcleo es el aumento de la latencia. Todas las tareas deben esperar a que el CPU esté libre para correr, con lo cual el valor de latencia de una tarea refleja no solo su context switch, sino que además, el tiempo de corrida y la latencia de las tareas anteriores. 
 
