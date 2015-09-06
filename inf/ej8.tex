@@ -20,25 +20,28 @@ Para corroborar su correcto funcionamiento se ideó un lote de tareas que permit
 los cores que cada tarea va a utilizar. 
 
 Lote utilizado:
-
-TaskCPU 20		
-TaskConsola 20	1 5	
-TaskCPU 5
-@2: 
-*2 TaskCPU 20
-TaskCPU 5
-@4:
-TaskCPU 20
-TaskConsola 10 1 5
-TaskConsola 2 1 2
-@18:				
-TaskCPU 5
-TaskConsola 3 2 4
+\begin{itemize}
+	\item TaskCPU 20		
+	\item TaskConsola 20 1 5	
+	\item TaskCPU 5
+	\item @2: 
+	\item *2 TaskCPU 20
+	\item TaskCPU 5
+	\item @4:
+	\item TaskCPU 20
+	\item TaskConsola 10 1 5
+	\item TaskConsola 2 1 2
+	\item @18:				
+	\item TaskCPU 5
+	\item TaskConsola 3 2 4
+\end{itemize}
 
 La simulación se hizo con 3 cores con cambio de contexto 0, ya que no modifica el comportamiento del scheduler y costo de migración de núcleo 0.
 La idea del lote, es cargar los primeros cores con tareas que tarden mas en terminar, y dejar en el ultimo tareas que vayan terminando y que liberen el cpu, 
 para poder apreciar de esta forma, que efectivamente se asignará el cpu con menos tareas.
 Debido a la implementación cuando todos los cores tengan igual cantidad de procesos, se le asignará el cpu mas chico numéricamente. 
+
+\newpage
 
 \begin{figure}[h]
   \includegraphics[width=\textwidth]{../ej8/rr2.png}
