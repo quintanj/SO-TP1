@@ -48,11 +48,22 @@ Debido a la implementación, cuando todos los cores tengan igual cantidad de pro
 \end{figure}
 
 Se puede observar que no existe migración de núcleos, ya que todas las tareas mantienen su número de cpu a lo largo de toda la simulación.
-En los instantes 0, 2 y 4 se ve que llegan las tareas y se les asignan los cores de la forma esperada. En el instante 4, los 3 cpu tienen 3 tareas cada uno. En el instante 15 el cpu 2 se queda sin tareas para ejecutar(la tarea 2 termina en el momento 2, la 5 en el 9 y la 13 en el 15). Por lo tanto se le asigna el IDLE_TASK por un ciclo de clock hasta que llegan dos nuevas tareas. Vemos que efectivamente se le asignan al core número 2, que es el que menos tareas tenía de los tres. 
+En los instantes 0, 2 y 4 se ve que llegan las tareas y se les asignan los cores de la forma esperada. En el instante 4, los 3 cpu tienen 3 tareas cada uno. En el instante 15 el cpu 2 se queda sin tareas para ejecutar(la tarea 2 termina en el momento 2, la 5 en el 9 y la 13 en el 15). Por lo tanto se le asigna el IDLE_TASK por un ciclo de clock hasta que llegan dos nuevas tareas. Vemos que efectivamente se le asignan al core número 2, que es el que menos tareas tenía de los tres. \\
 
 
+Por otro lado, generamos las siguientes tareas para comparar métricas. Ambas estan basadas en el mismo lote de tareas, con dos cores, cambio de contexto cero y cambio de núcleo 2. El cost cambio de núcleo será apreciable en el gráfico de Gantt donde se utilice el scheduler con migración.
+Estos ejemplos demuestran la desventaja de un scheduler sin migración de núcleos, es el caso en que varias tareas muy duraderas sean asignadas a un mismo core.
 
 
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{../ej8/comp1.png}
+  \caption{Sin migración.}
+\end{figure}
+
+\begin{figure}[h]
+  \includegraphics[width=\textwidth]{../ej8/comp2.png}
+  \caption{Con migración}
+\end{figure}
 
 
 

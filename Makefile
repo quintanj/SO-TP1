@@ -52,6 +52,8 @@ ejercicio7: simusched
 
 ejercicio8: simusched
 	./simusched ej8/lotej8.tsk 3 0 0 SchedRR2 3 3 3 | ./graphsched.py > ej8/rr2.png
+	./simusched ej8/loteComp.tsk 2 0 2 SchedRR 3 2 | ./graphsched.py > ej8/comp2.png
+	./simusched ej8/loteComp.tsk 2 0 2 SchedRR2 3 2 | ./graphsched.py > ej8/comp1.png
 
 
 clean:
