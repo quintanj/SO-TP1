@@ -31,19 +31,6 @@ Los parámetros de calidad a analizar son: latencia, waiting time y tiempo total
 \end{figure}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
  \begin{table}[h!]
  	\begin{center}
  		\caption{Parámetros de calidad para el sceduler round robin: SchedRR.}
@@ -83,5 +70,11 @@ Los parámetros de calidad a analizar son: latencia, waiting time y tiempo total
  	\end{center}
  \end{table}
 
+Como puede verse en la tabla \ref{tab:table1}, la latencia es menor cuando el quantum es 2 y va subiendo a medida que sube el quantum, esto sucede dado que el scheduler round robin cuando agota su quantum desaloja a la tarea en ejecución y toma una nueva dentro de la cola de tareas que tiene definida. A menor quantum más se apega el scheduler al concepto de time-sharing mientras que a mayor quantum más tienen que esperar las tareas encoladas para empezar su ejecución.
+
+En cuanto a waiting time y tiempo total de ejecución (que están íntimamente relacionados dado que el waiting time es la diferencia entre el tiempo total de ejecución y el tiempo que cada tarea posee el uso de los recursos de CPU), ambos parámetros son menores en promedio mientras mayor es el quantum otorgado a cada tarea. Esto sucede debido a que hay menor cantidad de cambios de contexto mientras más grande es el quantum otorgado a cada tarea. 
+Sin embargo el promedio no es totalmente significativo dado que depende fuertemente del tipo y naturaleza de tareas que se ejecutan. Puede verse, por ejemplo, que si bien las tareas que hacen consumo intensivo de CPU mejoran sensiblemente sus parámetros mientras que las tareas que utilizan llamadas bloqueantes se ven afectadas negativamente.
+
+Si tomamos como parámetro de ''justicia'' de un scheduler que sean favorecidos los procesos que menor cantidad de CPU toman, podemos concluir que es más justo un quantum menor, aunque debido al costo de cambio de contexto el cálculo a efectuar debe ser cuidadoso para no desperdiciar demasiado tiempo en el mismo. Se debe tener en cuenta que los valores tomados son basados en lotes de tareas conocidos y en un sistema interactivo hay mayor variabilidad en la naturaleza de las mismas.
 
 \clearpage   %con esto todo se arregla!!!!
