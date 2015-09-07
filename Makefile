@@ -22,7 +22,7 @@ simu.o: simu.cpp simu.h basetask.h basesched.h
 simusched.o: simusched.cpp basetask.h basesched.h tasks.h
 tasks.o: tasks.cpp tasks.h basetask.h
 
-
+#todos los targets ejerciciobla generan las imagenes de cada lote dentro de las carpetas ejbla
 
 ejercicio1: simusched
 	./simusched ej1/lote1.tsk 1 0 0 SchedFCFS | ./graphsched.py > ej1/lote1.png
