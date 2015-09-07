@@ -41,41 +41,44 @@ Los parámetros de calidad a analizar son: latencia, waiting time y tiempo total
 
 
 
-%Jorge, la tabla daba problemas con el formato de latex, no tuve tiempo de arreglarlo ni el corazon para borrarlo Y_Y
 
 
-% \begin{table}[h!]
-% 	\begin{center}
-% 		\caption{Parámetros de calidad para el sceduler round robin: SchedRR.}
-% 		\label{tab:table1}
-% 		\begin{tabular}{|l|c|c|c|c|}
-% 			\hline
-% 			& Tarea & Latencia & Waiting time & Tiempo total de ejecución \\
-% 			\hline
-% 			\hline
-% 			& 0 & 2 & & 339 \\ \cline{2-5}
-% 			& 1 & 6 & & 342\\ \cline{2-5}
-% 			Quantum = 2 & 2 & 10 & & 345 \\ \cline{2-5}
-% 			& 3 & 14 & & 105 \\ \cline{2-5}
-% 			& 4 & 17 & & 108 \\ 
-% 			\hline
-% 			\hline
-% 			& 0 & 2 & & 213 \\ \cline{2-5}
-% 			& 1 & 14 & & 216 \\ \cline{2-5}
-% 			Quantum = 10 & 2 & 26 & & 219\\ \cline{2-5}
-% 			& 3 & 38 & & 222 \\ \cline{2-5}
-% 			& 4 & 41 & & 225 \\ 
-% 			\hline
-% 			\hline
-% 			& 0 & 2 & & 165 \\ \cline{2-5}
-% 			& 1 & 54 & & 168 \\ \cline{2-5}
-% 			Quantum = 50 & 2 & 171 & & 156 \\ \cline{2-5}
-% 			& 3 & 158 & & 198 \\ \cline{2-5}
-% 			& 4 & 161 & & 201 \\
-% 			\hline
-% 		\end{tabular}
-% 	\end{center}
-% \end{table}
+
+ \begin{table}[h!]
+ 	\begin{center}
+ 		\caption{Parámetros de calidad para el sceduler round robin: SchedRR.}
+ 		\label{tab:table1}
+ 		\begin{tabular}{|l|c|c|c|c|c|}
+ 			\hline
+ 			& Tarea & Latencia & Waiting time & Total ejecución & Ratio (Espera/total) \\
+ 			\hline
+ 			\hline
+ 			& 0 & 2 & 288 & 339 & 0.85\\ \cline{2-6}
+ 			& 1 & 6 & 291 & 342 & 0.85 \\ \cline{2-6}
+ 			Quantum = 2 & 2 & 10 & 294 & 345 & 0.85 \\ \cline{2-6}
+ 			& 3 & 14 & 99 & 105 & 0.94 \\ \cline{2-6}
+ 			& 4 & 17 & 102 & 108 & 0.94 \\ \cline{2-6}
+ 			& Avg & 9.8 & 214.8 & 227.8 & 0.89 \\
+ 			\hline
+ 			\hline
+ 			& 0 & 2 & 162 & 213 & 0.76 \\ \cline{2-6}
+ 			& 1 & 14 & 165 & 216 & 0.76 \\ \cline{2-6}
+ 			Quantum = 10 & 2 & 26 & 168 & 219 & 0.76 \\ \cline{2-6}
+ 			& 3 & 38 & 216 & 222 & 0.97 \\ \cline{2-6}
+ 			& 4 & 41 & 219 & 225 & 0.97 \\ \cline{2-6}
+ 			& Avg & 24.2 & 186 & 219 & 0.84 \\
+ 			\hline
+ 			\hline
+ 			& 0 & 2 & 114 & 165 & 0.69 \\ \cline{2-6}
+ 			& 1 & 54 & 117 & 168 & 0.69 \\ \cline{2-6}
+ 			Quantum = 50 & 2 & 106 & 120 & 171 & 0.70\\ \cline{2-6}
+ 			& 3 & 158 & 192 & 198 & 0.97 \\ \cline{2-6}
+ 			& 4 & 161 & 195 & 201 & 0.97 \\ \cline{2-6}
+ 			& Avg & 96.2 & 147.6 & 180.6 & 0.80 \\
+ 			\hline
+ 		\end{tabular}
+ 	\end{center}
+ \end{table}
 
 
 \clearpage   %con esto todo se arregla!!!!
